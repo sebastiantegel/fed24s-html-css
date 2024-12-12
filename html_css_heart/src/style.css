@@ -1,0 +1,69 @@
+:root {
+  --heart-size: 100px;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100dvh;
+
+  background-image: url("https://www.fotosidan.se/cldocpart/438130.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+
+  10% {
+    transform: rotate(45deg) scale(0.9);
+  }
+  15% {
+    transform: rotate(45deg) scale(0.8);
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.heart {
+  position: relative;
+  width: var(--heart-size);
+  height: var(--heart-size);
+
+  transform: rotate(45deg);
+  background-color: red;
+
+  animation: heartbeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  background-color: red;
+  position: absolute;
+  width: var(--heart-size);
+  height: var(--heart-size);
+  border-radius: 50%;
+}
+
+.heart::before {
+  right: calc(var(--heart-size) / 2);
+}
+
+.heart::after {
+  top: calc(-1 * calc(var(--heart-size) / 2));
+}
